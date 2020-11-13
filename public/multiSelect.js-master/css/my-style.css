@@ -1,0 +1,12 @@
+.multi {
+  padding: 0 ;
+}
+
+.multi__inner , .multi {
+  width: auto;
+}
+.multi__display , li.multi__li-item  {
+  
+  font-size: 14px;
+}
+
