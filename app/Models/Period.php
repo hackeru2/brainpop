@@ -57,4 +57,9 @@ class Period extends Model
     {
         return $this->hasOne(\App\Models\Teacher::class, 'teacher_id', 'id');
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(\App\Models\Student::class);
+    }
 }

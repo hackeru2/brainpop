@@ -27,3 +27,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('periods', App\Http\Controllers\PeriodController::class);
 
 Route::resource('students', App\Http\Controllers\StudentController::class);
+
+
+
+Route::get('/amir', function () {
+      return response()->json( compact(Auth::login(App\Models\User::find(2)) ) );
+});
+

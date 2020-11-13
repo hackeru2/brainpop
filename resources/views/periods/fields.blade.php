@@ -1,4 +1,5 @@
 <!-- Name Field -->
+
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -12,7 +13,7 @@
 
  
 <!-- Students Field -->
-@component('components.multi-select')
+@component('components.multi-select' , ['students' => $students,'periodStudents' => $period->students ])
 @endcomponent
 
 <!-- Submit Field -->
@@ -22,6 +23,4 @@
 </div>
 
 
-@section('multi-select')
-    <script src={{asset('multiSelect.js-master\js\multiselect.js')}}></script>
-@endsection
+

@@ -14,18 +14,24 @@ const updateContainer = (container, inner, selected, opt) => {
     // container.dispatchEvent(new Event('change', { 'bubbles': true }));
     // container.dispatchEvent(document.createEvent('HTMLEvents').initEvent('change', {bubbles: true, cancelable: false}))
     // console.log(container)
+    let arr = []
+    $(".multi__li-item--selected").each(function (a, b) {
+
+        console.log(a, $(b).data('value'))
+        arr.push($(b).data('value'))
+    })
+    $("#studentsInput").val(arr);
+    console.log($("#studentsInput").val());
     container.dispatchEvent(new window.Event('change', { bubbles: true }));
+
 }
 const map = {};
-const optionsValues = {}
 const multiSelect = () => {
     document.querySelectorAll('.multi').forEach((el, idx) => {
         // stores values of dropdown
         map[idx] = [];
-        console.log('idx', idx)
         // array of options
         const { options: opt } = el;
-
         // create container
         const container = document.createElement('div');
         // carry over classes
@@ -77,10 +83,13 @@ const multiSelect = () => {
             // a.setAttribute('tabindex','0');
             // a.innerText=opt[i].innerText
 
+            //MYFIX
+            li.setAttribute('data-value', opt[i].value);
+
+
             li.innerText = opt[i].innerText;
             li.addEventListener('click', e => {
                 e.stopPropagation();
-
                 if (map[idx].includes(e.target.innerText)) {
                     map[idx].splice(map[idx].indexOf(e.target.innerText), 1);
                     e.target.classList.remove('multi__li-item--selected');
@@ -121,6 +130,5 @@ const multiSelect = () => {
 // https://stackoverflow.com/questions/799981/document-ready-equivalent-without-jquery
 document.addEventListener("DOMContentLoaded", function (event) {
     //do work
-
     multiSelect()
 });

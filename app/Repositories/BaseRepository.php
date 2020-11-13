@@ -171,6 +171,11 @@ abstract class BaseRepository
         $model->fill($input);
 
         $model->save();
+         
+        
+        
+        // $students = $request->students ;
+        // $period->model->students()->sync(   explode( ',' , $students)     );
 
         return $model;
     }

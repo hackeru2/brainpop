@@ -11,6 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
+                   
                    {!! Form::model($period, ['route' => ['periods.update', $period->id], 'method' => 'patch']) !!}
 
                         @include('periods.fields')

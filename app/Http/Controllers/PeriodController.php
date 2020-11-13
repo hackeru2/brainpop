@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePeriodRequest;
 use App\Http\Requests\UpdatePeriodRequest;
 use App\Repositories\PeriodRepository;
+use App\models\Student;
+use App\models\Period;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -100,7 +102,8 @@ class PeriodController extends AppBaseController
             return redirect(route('periods.index'));
         }
 
-        return view('periods.edit')->with('period', $period);
+        //return view('periods.edit')->with('period', $period , Student::all());
+        return view('periods.edit', ['period' =>  $period , 'students' => Student::all()]);
     }
 
     /**
@@ -113,9 +116,11 @@ class PeriodController extends AppBaseController
      */
     public function update($id, UpdatePeriodRequest $request)
     {
+       
 
-        dd($request->all());
+         
         $period = $this->periodRepository->find($id);
+        
 
         if (empty($period)) {
             Flash::error('Period not found');
@@ -124,6 +129,9 @@ class PeriodController extends AppBaseController
         }
 
         $period = $this->periodRepository->update($request->all(), $id);
+         
+        $this->updateStudents
+        (Period::find($id) , $request->students);
 
         Flash::success('Period updated successfully.');
 
@@ -154,5 +162,13 @@ class PeriodController extends AppBaseController
         Flash::success('Period deleted successfully.');
 
         return redirect(route('periods.index'));
+    }
+
+    public function updateStudents(Period $period , $periodStudents  )
+    {
+         
+        $studentsIDs = !$periodStudents ? [] :  explode( ',' ,  $periodStudents );
+        $period->students()->sync($studentsIDs) ;
+
     }
 }
