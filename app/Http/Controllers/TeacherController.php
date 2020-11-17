@@ -17,6 +17,7 @@ class TeacherController extends AppBaseController
 
     public function __construct(TeacherRepository $teacherRepo)
     {
+         
         $this->teacherRepository = $teacherRepo;
     }
 
@@ -54,6 +55,7 @@ class TeacherController extends AppBaseController
      */
     public function store(CreateTeacherRequest $request)
     {
+        
         $input = $request->all();
 
         $teacher = $this->teacherRepository->create($input);

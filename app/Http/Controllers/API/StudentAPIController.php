@@ -22,6 +22,9 @@ class StudentAPIController extends AppBaseController
 
     public function __construct(StudentRepository $studentRepo)
     {
+ 
+
+        $this->middleWare('auth:api')->except(['store']);
         $this->studentRepository = $studentRepo;
     }
 
@@ -34,6 +37,8 @@ class StudentAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
+         
+        
         $students = $this->studentRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),
@@ -53,6 +58,7 @@ class StudentAPIController extends AppBaseController
      */
     public function store(CreateStudentAPIRequest $request)
     {
+        
         $input = $request->all();
 
         $student = $this->studentRepository->create($input);

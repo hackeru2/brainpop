@@ -44,7 +44,7 @@ class PeriodController extends AppBaseController
      */
     public function create()
     {
-        return view('periods.create');
+        return view('periods.create')->with('students', Student::all() );
     }
 
     /**
@@ -60,7 +60,11 @@ class PeriodController extends AppBaseController
 
         $period = $this->periodRepository->create($input);
 
+        $this->syncStudents ( $period  , $request->students);
+
         Flash::success('Period saved successfully.');
+
+        
 
         return redirect(route('periods.index'));
     }
@@ -82,7 +86,10 @@ class PeriodController extends AppBaseController
             return redirect(route('periods.index'));
         }
 
-        return view('periods.show')->with('period', $period);
+        
+
+       // return view('periods.show')->with('period', $period);
+        return view('periods.show', ['period' =>  $period , 'students' => Student::all()]);
     }
 
     /**
@@ -130,7 +137,7 @@ class PeriodController extends AppBaseController
 
         $period = $this->periodRepository->update($request->all(), $id);
          
-        $this->updateStudents
+        $this->syncStudents
         (Period::find($id) , $request->students);
 
         Flash::success('Period updated successfully.');
@@ -164,7 +171,7 @@ class PeriodController extends AppBaseController
         return redirect(route('periods.index'));
     }
 
-    public function updateStudents(Period $period , $periodStudents  )
+    public function syncStudents(Period $period , $periodStudents  )
     {
          
         $studentsIDs = !$periodStudents ? [] :  explode( ',' ,  $periodStudents );

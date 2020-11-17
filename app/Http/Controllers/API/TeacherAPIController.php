@@ -22,6 +22,7 @@ class TeacherAPIController extends AppBaseController
 
     public function __construct(TeacherRepository $teacherRepo)
     {
+        $this->middleWare('auth:api')->except(['store']);  
         $this->teacherRepository = $teacherRepo;
     }
 
@@ -53,6 +54,7 @@ class TeacherAPIController extends AppBaseController
      */
     public function store(CreateTeacherAPIRequest $request)
     {
+         
         $input = $request->all();
 
         $teacher = $this->teacherRepository->create($input);
@@ -127,5 +129,15 @@ class TeacherAPIController extends AppBaseController
         $teacher->delete();
 
         return $this->sendSuccess('Teacher deleted successfully');
+    }
+
+    public function students(Teacher $teacher )
+    {
+        return $teacher->students(); 
+    }
+
+    public function periods(Teacher $teacher )
+    {
+        return $teacher->periods; 
     }
 }

@@ -23,7 +23,7 @@ class StudentFactory extends Factory
     {
         return [
         'username' => $this->faker->word,
-        'password' => $this->faker->word,
+        'password' => $this->faker->password. "^b1B",
         'full_name' => $this->faker->word,
         'grade' => $this->faker->randomDigitNotNull,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),

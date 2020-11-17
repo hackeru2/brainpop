@@ -22,6 +22,7 @@ class PeriodAPIController extends AppBaseController
 
     public function __construct(PeriodRepository $periodRepo)
     {
+        $this->middleWare('auth:api')->except(['store']);  
         $this->periodRepository = $periodRepo;
     }
 
@@ -128,4 +129,9 @@ class PeriodAPIController extends AppBaseController
 
         return $this->sendSuccess('Period deleted successfully');
     }
+
+    public function students(Period $period )
+    {
+        return $period->students; 
+    } 
 }

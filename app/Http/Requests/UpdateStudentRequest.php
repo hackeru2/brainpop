@@ -29,4 +29,11 @@ class UpdateStudentRequest extends FormRequest
         
         return $rules;
     }
+
+    public function messages()
+    {
+
+          return Student::errorMessages();
+         
+    }
 }

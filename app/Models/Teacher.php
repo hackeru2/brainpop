@@ -33,6 +33,11 @@ class Teacher extends Model
         'email'
     ];
 
+    protected $hidden = [
+        // 'password',
+    
+    ];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -53,10 +58,29 @@ class Teacher extends Model
      */
     public static $rules = [
         'username' => 'required|min:2',
-        'password' => 'required|min:5',
+        // 'password' => 'required|min:5',
+        'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
         'full_name' => 'required|min:2',
         'email' => 'required|email'
     ];
 
+    public function students()
+    {
+        return $this->periods->map->students ;
+    }   
     
+    public function periods()
+    {
+        return $this->hasMany('\App\Models\Period');
+    }
+
+    static  public function errorMessages()
+    {
+
+        // return Student::errorMessages();
+        return [
+            'username.required' => 'You forgot Teacher UserName! :) ',
+            'password.regex' => 'The Teacher password must contain an uppercase (A) letter, a lowercase letter (a), a special character (*) and a number (5) ',
+        ];
+    }
 }

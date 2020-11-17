@@ -5,10 +5,10 @@
 </div>
 
 <!-- Password Field -->
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('password', 'Password:') !!}
     <p>{{ $student->password }}</p>
-</div>
+</div> --}}
 
 <!-- Full Name Field -->
 <div class="form-group">

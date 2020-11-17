@@ -13,7 +13,7 @@
 
  
 <!-- Students Field -->
-@component('components.multi-select' , ['students' => $students,'periodStudents' => $period->students ])
+@component('components.multi-select' , ['students' => $students ,'periodStudents' => isset($period) ? $period->students : collect([]) ])
 @endcomponent
 
 <!-- Submit Field -->

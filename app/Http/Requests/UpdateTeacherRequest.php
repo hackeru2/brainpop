@@ -29,4 +29,11 @@ class UpdateTeacherRequest extends FormRequest
         
         return $rules;
     }
+
+    public function messages()
+    {
+
+        return Teacher::errorMessages();
+        
+    }
 }

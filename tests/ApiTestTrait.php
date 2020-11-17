@@ -26,7 +26,15 @@ trait ApiTestTrait
             if (in_array($key, ['created_at', 'updated_at'])) {
                 continue;
             }
-            $this->assertEquals($actualData[$key], $expectedData[$key]);
+            info("assertEquals");
+            if ($key == "password" && !$this->is_read )
+              { 
+                  
+                   $this->assertTrue(\Hash::check( $actualData[$key] , $expectedData[$key] ));
+                
+                }
+
+            else $this->assertEquals($actualData[$key], $expectedData[$key]);
         }
     }
 }

@@ -22,8 +22,8 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'username' => $this->faker->name,
-        'password' => $this->faker->word,
+        'username' => $this->faker->name,
+        'password' => $this->faker->password . "Aa!1",
         'full_name' => $this->faker->name,
         'email' => $this->faker->email,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),

@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class StudentRepository
  * @package App\Repositories
- * @version November 11, 2020, 8:13 am UTC
+ * @version November 11, 2020, 5:52 am UTC
 */
 
 class StudentRepository extends BaseRepository
@@ -18,7 +18,7 @@ class StudentRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'username',
-        'password',
+        // 'password',
         'full_name',
         'grade'
     ];
@@ -40,4 +40,6 @@ class StudentRepository extends BaseRepository
     {
         return Student::class;
     }
+
+    
 }

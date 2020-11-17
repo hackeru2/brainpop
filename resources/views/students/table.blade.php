@@ -13,7 +13,8 @@
         @foreach($students as $student)
             <tr>
                 <td>{{ $student->username }}</td>
-            <td>{{ $student->password }}</td>
+            {{-- <td>{{ $student->password }}</td> --}}
+            <td>{{ '*********' }}</td>  
             <td>{{ $student->full_name }}</td>
             <td>{{ $student->grade }}</td>
                 <td>

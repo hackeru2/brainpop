@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use  App\Models\Teacher,App\Models\Student;
+use  App\Models\Teacher,App\Models\Student , App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -60,13 +60,15 @@ class AuthController extends Controller
 
         if(!$member || !$this->validatePasswordMember($member , $request->password)) return $this->invalidCredentials();
 
-        return $member;
+        $token = auth('api')->login(User::find(2));
+        return   $this->respondWithToken($token);
 
     }
     public function invalidCredentials()
     {
         return response()->json(['error' => 'Invalid credentials', 401 ]);
     }
+
     public function validatePasswordMember($model , $password )
     {
         return Hash::check($password,  $model->password) ;

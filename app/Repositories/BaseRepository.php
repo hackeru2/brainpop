@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Hash;
 
 abstract class BaseRepository
 {
@@ -131,7 +131,11 @@ abstract class BaseRepository
      * @return Model
      */
     public function create($input)
+
     {
+
+        $input = $this->hashPassword($input);
+
         $model = $this->model->newInstance($input);
 
         $model->save();
@@ -164,6 +168,9 @@ abstract class BaseRepository
      */
     public function update($input, $id)
     {
+
+        $input = $this->hashPassword($input);
+
         $query = $this->model->newQuery();
 
         $model = $query->findOrFail($id);
@@ -194,5 +201,15 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         return $model->delete();
+    }
+
+    public function hashPassword($input)  
+    
+    {
+        if (!array_key_exists("password", $input)) return $input ; 
+
+        $input['password'] = Hash::make($input['password']);
+
+        return $input;
     }
 }

@@ -13,7 +13,8 @@
         @foreach($teachers as $teacher)
             <tr>
                 <td>{{ $teacher->username }}</td>
-            <td>{{ $teacher->password }}</td>
+            {{-- <td>{{ $teacher->password }}</td> --}}
+            <td>{{ "********" }}</td>
             <td>{{ $teacher->full_name }}</td>
             <td>{{ $teacher->email }}</td>
                 <td>

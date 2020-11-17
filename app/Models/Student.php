@@ -35,6 +35,13 @@ class Student extends Model
         'grade'
     ];
 
+
+    
+    protected $hidden = [
+        'password',
+    
+    ];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -67,4 +74,12 @@ class Student extends Model
     {
         return $this->belongsToMany(\App\Models\Period::class);
     }
+
+    static public function errorMessages() {
+  
+        return [
+            'username.required' => 'You forgot UserName! :) ',
+            'password.regex' => 'The password must contain an uppercase (A) letter, a lowercase letter (a), a special character (*) and a number (5) ',
+            ];
+        }
 }
