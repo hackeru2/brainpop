@@ -47,7 +47,7 @@ class StudentApiTest extends TestCase
     {
         $student = Student::factory()->create();
         $editedStudent = Student::factory()->make()->toArray();
-
+        info(print_r($editedStudent ,1));
         $this->response = $this->json(
             'PUT',
             '/api/students/'.$student->id,
