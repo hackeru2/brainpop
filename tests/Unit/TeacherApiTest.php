@@ -10,12 +10,13 @@ class TeacherApiTest extends TestCase
 {
     use ApiTestTrait, WithoutMiddleware, DatabaseTransactions;
 
-    public $is_read = false ;
+    
     /**
      * @test
      */
     public function test_create_teacher()
     {
+        
         $teacher = Teacher::factory()->make()->toArray();
          
         $this->response = $this->json(
@@ -31,9 +32,10 @@ class TeacherApiTest extends TestCase
      */
     public function test_read_teacher()
     {
+        
         $this->is_read  = true ;
         $teacher = Teacher::factory()->create();
-        info($teacher->id) ;
+      
         $this->response = $this->json(
             'GET',
             '/api/teachers/'.$teacher->id

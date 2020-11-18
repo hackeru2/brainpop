@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 /**
  * Class Teacher
  * @package App\Models
@@ -19,9 +20,9 @@ class Teacher extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    use Traits\ShowPasswordsTesting;
     public $table = 'teachers';
     
-
     protected $dates = ['deleted_at'];
 
 
@@ -34,7 +35,7 @@ class Teacher extends Model
     ];
 
     protected $hidden = [
-        // 'password',
+        'password',
     
     ];
 
@@ -64,6 +65,8 @@ class Teacher extends Model
         'email' => 'required|email'
     ];
 
+    
+
     public function students()
     {
         return $this->periods->map->students ;
@@ -83,4 +86,22 @@ class Teacher extends Model
             'password.regex' => 'The Teacher password must contain an uppercase (A) letter, a lowercase letter (a), a special character (*) and a number (5) ',
         ];
     }
+
+    public function toArray()
+{
+    // Only show passwords if running tests
+   
+        $this->setAttributeVisibility();
+   
+
+    return parent::toArray();
+}
+
+    public function setAttributeVisibility()
+    {
+         if(env("APP_ENV") == "testing")
+        $this->makeVisible(array_merge($this->fillable, $this->appends));
+    }
+
+    
 }

@@ -53,9 +53,9 @@ class Period extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      **/
-    public function teacher()
+    public function teacher()       
     {
-        return $this->hasOne(\App\Models\Teacher::class, 'teacher_id', 'id');
+        return $this->hasOne(\App\Models\Teacher::class, 'id', 'teacher_id');
     }
 
     public function students()

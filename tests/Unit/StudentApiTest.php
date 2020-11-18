@@ -30,6 +30,7 @@ class StudentApiTest extends TestCase
      */
     public function test_read_student()
     {
+        $this->is_read = true;
         $student = Student::factory()->create();
 
         $this->response = $this->json(
@@ -38,6 +39,7 @@ class StudentApiTest extends TestCase
         );
 
         $this->assertApiResponse($student->toArray());
+        $this->is_read = false;
     }
 
     /**

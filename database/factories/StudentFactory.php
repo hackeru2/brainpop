@@ -22,9 +22,9 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-        'username' => $this->faker->word,
-        'password' => $this->faker->password. "^b1B",
-        'full_name' => $this->faker->word,
+        'username' => $this->faker->username,
+        'password' =>"Aa1!". $this->faker->password,
+        'full_name' => $this->faker->words(2,true),
         'grade' => $this->faker->randomDigitNotNull,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')

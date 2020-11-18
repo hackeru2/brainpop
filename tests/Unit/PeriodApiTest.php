@@ -15,7 +15,7 @@ class PeriodApiTest extends TestCase
      */
     public function test_create_period()
     {
-        $period = factory(Period::class)->make()->toArray();
+        $period = Period::factory()->make()->toArray();
 
         $this->response = $this->json(
             'POST',
@@ -30,7 +30,7 @@ class PeriodApiTest extends TestCase
      */
     public function test_read_period()
     {
-        $period = factory(Period::class)->create();
+        $period = Period::factory()->create();
 
         $this->response = $this->json(
             'GET',
@@ -45,8 +45,8 @@ class PeriodApiTest extends TestCase
      */
     public function test_update_period()
     {
-        $period = factory(Period::class)->create();
-        $editedPeriod = factory(Period::class)->make()->toArray();
+        $period = Period::factory()->create();
+        $editedPeriod = Period::factory()->make()->toArray();
 
         $this->response = $this->json(
             'PUT',
@@ -62,7 +62,7 @@ class PeriodApiTest extends TestCase
      */
     public function test_delete_period()
     {
-        $period = factory(Period::class)->create();
+        $period = Period::factory()->create();
 
         $this->response = $this->json(
             'DELETE',
@@ -78,3 +78,4 @@ class PeriodApiTest extends TestCase
         $this->response->assertStatus(404);
     }
 }
+    

@@ -3,11 +3,13 @@
 trait ApiTestTrait
 {
     private $response;
+    public $is_read = false ;
     public function assertApiResponse(Array $actualData)
     {
+        // info($this->response->getContent());
         $this->assertApiSuccess();
-
         $response = json_decode($this->response->getContent(), true);
+        
         $responseData = $response['data'];
 
         $this->assertNotEmpty($responseData['id']);
@@ -26,7 +28,7 @@ trait ApiTestTrait
             if (in_array($key, ['created_at', 'updated_at'])) {
                 continue;
             }
-            info("assertEquals");
+             
             if ($key == "password" && !$this->is_read )
               { 
                   

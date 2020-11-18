@@ -37,4 +37,19 @@ class PeriodRepository extends BaseRepository
     {
         return Period::class;
     }
+    public function create( $input)
+    {
+
+        $period =  parent::create($input);
+        $this->syncStudents ( $period  , $input['students']);
+        return $period;
+    }
+
+    public function syncStudents(Period $period , $periodStudents  )
+    {
+         
+        $studentsIDs = !$periodStudents ? [] :  explode( ',' ,  $periodStudents );
+        $period->students()->sync($studentsIDs) ;
+
+    }
 }

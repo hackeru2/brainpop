@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Student extends Model
 {
     use SoftDeletes , HasFactory;
-
+    use Traits\ShowPasswordsTesting;
     public $table = 'students';
     
 
@@ -38,7 +38,7 @@ class Student extends Model
 
     
     protected $hidden = [
-        'password',
+        // 'password',
     
     ];
 
