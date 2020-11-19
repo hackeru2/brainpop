@@ -17,9 +17,9 @@ Dillinger is currently extended with the following plugins. Instructions on how 
 
 | Plugin | README |
 | ------ | ------ |
-| Laravel | [plugins/dropbox/README.md][PlDb] |
-| Infoym | [plugins/github/README.md][PlGh] |
-| JWT | [plugins/googledrive/README.md][PlGd] |
+| Laravel | https://laravel.com/docs |
+| Infoym | https://www.infyom.com/open-source |
+| JWT | https://jwt-auth.readthedocs.io/en/develop/auth-guard  |
  
 
 
