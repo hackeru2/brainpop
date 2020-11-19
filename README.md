@@ -70,9 +70,11 @@ php artisan serve
 > **Use Token reposnse to send Request to oher routes** :
 > | PUT| http://[your_localhost_route] /api/periods/1?token=[token]
 >| ------ | ------ |
+>
 > **No Need for token when Creating new rows** :
 > | POST| http://[your_localhost_route]/api/periods
 >| ------ | ------ |
+>
 >#### Request Params Periods create/update :
 >```json
 >{
