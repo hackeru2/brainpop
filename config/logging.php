@@ -42,9 +42,10 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
+            'driver' => 'errorlog', //'single',
             'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
+            'level' => 'debug',
+            // 'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'daily' => [
