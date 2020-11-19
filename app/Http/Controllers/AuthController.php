@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function loginStudentOrTeacher( Request $request)
     {
         
-        $member =   Teacher::where('email',  $request->email )->first() ?: Student::where('email',  $request->email )->first() ;
+        $member =   Teacher::where('username',  $request->username )->first() ?: Student::where('username',  $request->username )->first() ;
 
         if(!$member || !$this->validatePasswordMember($member , $request->password)) return $this->invalidCredentials();
 
