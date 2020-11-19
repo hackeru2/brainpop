@@ -37,6 +37,7 @@ class PeriodRepository extends BaseRepository
     {
         return Period::class;
     }
+
     public function create( $input)
     {
 
@@ -45,6 +46,15 @@ class PeriodRepository extends BaseRepository
         return $period;
     }
 
+    public function update($input, $id)
+    {
+
+        $period =  parent::update($input, $id);
+        $this->syncStudents ( $period  , $input['students']);
+        return $period;
+    }
+
+    
     public function syncStudents(Period $period , $periodStudents  )
     {
          

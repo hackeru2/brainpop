@@ -28,4 +28,11 @@ class UpdateTeacherAPIRequest extends APIRequest
         
         return $rules;
     }
+
+    public function messages()
+    {
+
+        return Teacher::errorMessages();
+        
+    }
 }

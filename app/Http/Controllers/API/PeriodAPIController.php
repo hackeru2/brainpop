@@ -57,8 +57,8 @@ class PeriodAPIController extends AppBaseController
         $input = $request->all();
 
         $period = $this->periodRepository->create($input);
-       // $this->syncStudents ( $period  , $request->students);
-        return $this->sendResponse($period->load('teacher')->toArray(), 'Period saved successfully');
+        
+        return $this->sendResponse($period->load('teacher','students')->toArray(), 'Period saved successfully');
     }
 
     /**

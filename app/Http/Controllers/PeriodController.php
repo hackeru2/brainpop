@@ -60,7 +60,7 @@ class PeriodController extends AppBaseController
 
         $period = $this->periodRepository->create($input);
 
-        $this->syncStudents ( $period  , $request->students);
+         
 
         Flash::success('Period saved successfully.');
 
@@ -136,9 +136,10 @@ class PeriodController extends AppBaseController
         }
 
         $period = $this->periodRepository->update($request->all(), $id);
-         
-        $this->syncStudents
-        (Period::find($id) , $request->students);
+        
+        
+        // $this->syncStudents
+        // (Period::find($id) , $request->students);
 
         Flash::success('Period updated successfully.');
 
@@ -171,11 +172,5 @@ class PeriodController extends AppBaseController
         return redirect(route('periods.index'));
     }
 
-    public function syncStudents(Period $period , $periodStudents  )
-    {
-         
-        $studentsIDs = !$periodStudents ? [] :  explode( ',' ,  $periodStudents );
-        $period->students()->sync($studentsIDs) ;
-
-    }
+     
 }
