@@ -94,6 +94,7 @@ php artisan serve
 >#### Fetch all students that are linked to a teacher via period:
 >| GET|http://[your_localhost_route]/api/teachers/{teacher_id}/students?token=[your_token eyJ0e..]
 >| ------ | ------ |
+>
 >**Full route list can be viewed in the api.php or web.php  file  or by typing :**
 >```sh
 >cd my-folder
