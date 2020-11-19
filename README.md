@@ -64,7 +64,7 @@ php artisan serve
 
 > **Example** :
 
-> | POST| http://[your_localhost_route] /api/login-members?email=kjassy@gmail.com&password=Aa!123456|
+> | POST| http://[your_localhost_route] /api/login-members?username=ibrown2&password=Aa!123|
 >| ------ | ------ |
 
 > **Use Token reposnse to send Request to oher routes** :
