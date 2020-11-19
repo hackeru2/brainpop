@@ -21,6 +21,7 @@ class Teacher extends Model
     use SoftDeletes;
     use HasFactory;
     use Traits\ShowPasswordsTesting;
+
     public $table = 'teachers';
     
     protected $dates = ['deleted_at'];
@@ -58,7 +59,7 @@ class Teacher extends Model
      * @var array
      */
     public static $rules = [
-        'username' => 'required|min:2',
+        'username' => ['required','unique:teachers' , 'unique:students' , 'string', 'min:2', 'max:30', 'alpha_dash'],
         // 'password' => 'required|min:5',
         'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
         'full_name' => 'required|min:2',

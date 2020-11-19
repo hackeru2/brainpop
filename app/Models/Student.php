@@ -61,7 +61,7 @@ class Student extends Model
      * @var array
      */
     public static $rules = [
-        'username' => ['required', 'unique:students' , 'string', 'min:2', 'max:30', 'alpha_dash'],
+        'username' => ['required','unique:teachers' , 'unique:students' , 'string', 'min:2', 'max:30', 'alpha_dash'],
         'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
         'full_name' => 'required|min:3',
         'grade' => 'required|min:0|max:12'
