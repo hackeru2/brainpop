@@ -26,7 +26,7 @@ Dillinger is currently extended with the following plugins. Instructions on how 
 
 ## Installation
 
-Use the package manager [composer](https://pip.pypa.io/en/stable/) to install this laravel project.
+Use the package manager [composer](https://getcomposer.org/) to install this laravel project.
 
 ```bash 
 cd my-folder 
@@ -80,7 +80,7 @@ php artisan serve
 >{
 > "name" :"534342-period" ,
 > "teacher_id" : 2 , 
-> "full_name" : "halulu",
+> "full_name" : "John Smith",
 >  "grade" : 3,
 >  "students" : "1,3,4"
 >  }
