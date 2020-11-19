@@ -24,8 +24,8 @@ class PeriodStudentFactory extends Factory
     public function definition()
     {
         return [
-            'student_id' => Student::select('id')->orderByRaw("RANDOM()")->first()->id, //rand() in sql
-            'period_id' => Period::select('id')->orderByRaw("RANDOM()")->first()->id,
+            'student_id' => Student::select('id')->first()->id, //rand() in sql //->orderByRaw("RANDOM()")
+            'period_id' => Period::select('id')->first()->id, //->orderByRaw("RANDOM()")
         ];
     }
 }
