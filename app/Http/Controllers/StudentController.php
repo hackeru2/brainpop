@@ -120,7 +120,7 @@ class StudentController extends AppBaseController
 
             return redirect(route('students.index'));
         }
-
+        
         $student = $this->studentRepository->update($request->all(), $id);
 
         Flash::success('Student updated successfully.');

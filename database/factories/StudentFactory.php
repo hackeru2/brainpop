@@ -22,7 +22,7 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-        'username' => $this->faker->username,
+        'username' => str_replace( ".","" , $this->faker->username),
         'password' =>"Aa1!". $this->faker->password,
         'full_name' => $this->faker->words(2,true),
         'grade' => $this->faker->randomDigitNotNull,

@@ -27,4 +27,6 @@ class CreateStudentRequest extends FormRequest
     {
         return Student::$rules;
     }
+
+    
 }

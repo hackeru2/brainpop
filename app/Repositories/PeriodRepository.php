@@ -48,7 +48,9 @@ class PeriodRepository extends BaseRepository
 
     public function update($input, $id)
     {
-
+            // info("**********");
+            // info($input['students']);
+            // info("**********");
         $period =  parent::update($input, $id);
         $this->syncStudents ( $period  , $input['students']);
         return $period;

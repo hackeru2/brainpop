@@ -80,7 +80,7 @@ php artisan serve
 > "teacher_id" : 2 , 
 > "full_name" : "halulu",
 >  "grade" : 3,
->  "students" : "1,3,4"
+>  "students" : "1,3,4" 
 >  }
 >```
 ## Contributing
@@ -88,4 +88,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
- 
+ + 

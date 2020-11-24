@@ -6,7 +6,7 @@ trait ApiTestTrait
     public $is_read = false ;
     public function assertApiResponse(Array $actualData)
     {
-        // info($this->response->getContent());
+         info($this->response->getContent());
         $this->assertApiSuccess();
         $response = json_decode($this->response->getContent(), true);
         
@@ -25,7 +25,7 @@ trait ApiTestTrait
     public function assertModelData(Array $actualData, Array $expectedData)
     {
         foreach ($actualData as $key => $value) {
-            if (in_array($key, ['created_at', 'updated_at'])) {
+            if (in_array($key, ['created_at', 'updated_at','students'])) {
                 continue;
             }
              

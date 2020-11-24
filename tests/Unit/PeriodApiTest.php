@@ -5,6 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Tests\ApiTestTrait;
 use App\Models\Period;
+use App\Models\PeriodStudent;
 
 class PeriodApiTest extends TestCase
 {
@@ -16,7 +17,7 @@ class PeriodApiTest extends TestCase
     public function test_create_period()
     {
         $period = Period::factory()->make()->toArray();
-
+        $period['students'] = "1,2";
         $this->response = $this->json(
             'POST',
             '/api/periods', $period
@@ -31,13 +32,15 @@ class PeriodApiTest extends TestCase
     public function test_read_period()
     {
         $period = Period::factory()->create();
-
+        
         $this->response = $this->json(
             'GET',
             '/api/periods/'.$period->id
         );
-
-        $this->assertApiResponse($period->toArray());
+        $period = $period->toArray();
+         
+         
+        $this->assertApiResponse($period );
     }
 
     /**
@@ -47,7 +50,7 @@ class PeriodApiTest extends TestCase
     {
         $period = Period::factory()->create();
         $editedPeriod = Period::factory()->make()->toArray();
-
+        $editedPeriod['students'] = "1,2";    
         $this->response = $this->json(
             'PUT',
             '/api/periods/'.$period->id,

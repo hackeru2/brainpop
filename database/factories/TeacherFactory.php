@@ -22,7 +22,7 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-        'username' => $this->faker->name,
+        'username' => str_replace( ".","" , $this->faker->username), //name
         'password' => $this->faker->password . "Aa!1",
         'full_name' => $this->faker->name,
         'email' => $this->faker->email,
